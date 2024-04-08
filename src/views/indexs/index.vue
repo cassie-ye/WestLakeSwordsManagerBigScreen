@@ -28,7 +28,7 @@
     </div>
     <div class="contetn_center">
       <CenterMap class="contetn_center_top" />
-      <ItemWrap class="contetn_center-bottom" title="安装计划">
+      <ItemWrap class="contetn_center-bottom" title="商品销售统计">
         <CenterBottom />
       </ItemWrap>
     </div>
