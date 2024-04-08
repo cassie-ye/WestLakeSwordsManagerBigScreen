@@ -42,16 +42,16 @@ export default {
         this.timer = null
       }
     },
-    //轮询
-    switper() {
-      if (this.timer) {
-        return
-      }
-      let looper = (a) => {
-        this.getData()
-      };
-      this.timer = setInterval(looper, this.$store.state.setting.echartsAutoTime);
-    },
+    // //轮询
+    // switper() {
+    //   if (this.timer) {
+    //     return
+    //   }
+    //   let looper = (a) => {
+    //     this.getData()
+    //   };
+    //   this.timer = setInterval(looper, this.$store.state.setting.echartsAutoTime);
+    // },
     getData() {
       this.pageflag = true
       // this.pageflag =false
@@ -63,7 +63,42 @@ export default {
         if (res.success) {
           this.config = {
             ...this.config,
-            data: res.data
+            data: [
+              {
+                name:"格致论道",
+                value:8878
+              },
+              {
+                name:"新·见未来",
+                value:7898
+              },
+              {
+                name:"十周年精华特刊",
+                value:6780
+              },
+              {
+                name:"安全特训营",
+                value:6455
+              },
+
+              {
+                name:"新品发布日",
+                value:4576
+              },
+
+              {
+                name:"第二直播间-1",
+                value:4567
+              },
+              {
+                name:"AI主播精彩专访",
+                value:3323
+              },
+              {
+                name:"小强实验室",
+                value:2345
+              },
+            ]
           }
           this.switper()
         } else {

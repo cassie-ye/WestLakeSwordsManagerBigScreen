@@ -16,7 +16,8 @@
         <LeftTop/>
       </ItemWrap>
       <ItemWrap class="contetn_left-center contetn_lr-item" title="用户总览">
-        <LeftCenter />
+        <FlyEcharts></FlyEcharts>
+        
       </ItemWrap>
       <ItemWrap
         class="contetn_left-bottom contetn_lr-item"
@@ -41,7 +42,7 @@
       </ItemWrap>
       <ItemWrap
         class="contetn_left-bottom contetn_lr-item"
-        title="报警排名(TOP8)"
+        title="精彩活动报名人数(TOP8)"
         style="padding: 0 10px 16px 10px"
       >
         <RightCenter />
@@ -65,6 +66,8 @@ import CenterBottom from "./center-bottom.vue";
 import RightTop from "./right-top.vue";
 import RightCenter from "./right-center.vue";
 import RightBottom from "./right-bottom.vue";
+import FlyEcharts from "./FlyEcharts.vue";
+
 
 export default {
   components: {
@@ -76,11 +79,11 @@ export default {
     RightCenter,
     RightBottom,
     CenterBottom,
+    FlyEcharts
   },
   data() {
     return {
-    
-    };
+    }
   },
   filters: {
     numsFilter(msg) {

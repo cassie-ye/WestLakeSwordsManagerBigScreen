@@ -17,7 +17,8 @@ import {
   borderBox8,
   borderBox1,
   borderBox3,
-  decoration6 
+  decoration6,
+  flylineChartEnhanced
 } from "@jiaminghi/data-view";
 import { Radio, Button, RadioGroup } from "element-ui";
 import Echart from "./components/echart/index.vue";
@@ -54,6 +55,7 @@ Vue.use(capsuleChart);
 Vue.use(borderBox1)
 Vue.use(borderBox3)
 Vue.use(decoration6)
+Vue.use(flylineChartEnhanced)
 // 全局数据过滤器
 Object.keys(filters).forEach((k) => Vue.filter(k, filters[k]));
 new Vue({
