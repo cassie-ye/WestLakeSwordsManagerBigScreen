@@ -51,12 +51,12 @@ export default {
       // this.pageflag =false
       currentGET("big4").then((res) => {
         if (!this.timer) {
-          console.log("报警次数", res);
+          // console.log("报警次数", res);
         }
         if (res.success) {
           this.countUserNumData = res.data;
           this.$nextTick(() => {
-            this.init(res.data.dateList, res.data.numList, res.data.numList2),
+            this.init(['5月5日','5月6日','5月7日','5月8日','5月9日','5月10日','5月11日'], [12237,10098,14567,12100,9876,8097,8897], [11000,18900,17985,21098,14454,17745,12237],),
               this.switper();
           });
         } else {
@@ -156,7 +156,7 @@ export default {
             type: "line",
             smooth: true,
             symbol: "none", //去除点
-            name: "报警1次数",
+            name: "每日资料下载总量",
             color: "rgba(252,144,16,.7)",
             areaStyle: {
                 //右，下，左，上
@@ -197,7 +197,7 @@ export default {
                     padding: [7, 14],
                     borderWidth: 0.5,
                     borderColor: "rgba(252,144,16,.5)",
-                    formatter: "报警1：{c}",
+                    formatter: "每日资料下载总量：{c}",
                   },
                 },
                 {
@@ -223,7 +223,7 @@ export default {
             type: "line",
             smooth: true,
             symbol: "none", //去除点
-            name: "报警2次数",
+            name: "每日观看总人数",
             color: "rgba(9,202,243,.7)",
             areaStyle: {
                 //右，下，左，上
@@ -264,7 +264,7 @@ export default {
                     borderRadius: 6,
                     borderColor: "rgba(9,202,243,.5)",
                     padding: [7, 14],
-                    formatter: "报警2：{c}",
+                    formatter: "每日观看总人数：{c}",
                     borderWidth: 0.5,
                   },
                 },
