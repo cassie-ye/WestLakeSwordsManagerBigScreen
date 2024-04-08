@@ -13,18 +13,18 @@
       <div class="you"></div>
     </div>
     <div class="mapwrap">
-      <dv-border-box-13 style="height: 588px;">
+      <dv-border-box-13 style="height: 588px">
         <!-- <div class="quanguo" @click="getData('china')" v-if="code !== 'china'">
           中国
         </div>
 
         <Echart id="CenterMap" :options="options" ref="CenterMap" /> -->
         <ItemWrap class="contetn_left-bottom contetn_lr-item" title="用户总览">
-          <LeftTop></LeftTop>
-          <!-- <div class="flex">
+          <div class="centerTopEcharts">
+            <dv-decoration-6 style="width:200px;height:50px; position: absolute; top: 70px;" />
             <LeftCenter></LeftCenter>
-            <LeftCenter></LeftCenter>
-          </div> -->
+            <countRegisteMethod></countRegisteMethod>
+          </div>
           <div class="item_title">
             <div class="zuo"></div>
             <span class="title-inner"> &nbsp;&nbsp;直播数据&nbsp;&nbsp; </span>
@@ -47,6 +47,7 @@ import { GETNOBASE } from "api";
 import LeftTop from "./left-top.vue";
 import LeftCenter from "./left-center.vue";
 import RightTop from "./right-top.vue";
+import countRegisteMethod from "./countRegisteMethod.vue";
 
 export default {
   data() {
@@ -63,6 +64,7 @@ export default {
     LeftTop,
     LeftCenter,
     RightTop,
+    countRegisteMethod,
   },
   mounted() {
     // console.log(xzqCode);
@@ -333,6 +335,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.centerTopEcharts{position: relative;
+  display: flex;
+  justify-content:center;
+}
 $item-title-height: 38px;
 $item_title_content-height: calc(100% - 38px);
 .rightTop {
@@ -341,8 +347,8 @@ $item_title_content-height: calc(100% - 38px);
 }
 .item_title {
   // background-color: #fff;
-  margin-bottom: -50px;
-  margin-top: 10px;
+  margin-bottom: -75px;
+  // margin-top: 30px;
   height: $item-title-height;
   line-height: $item-title-height;
   width: 100%;
@@ -445,4 +451,3 @@ $item_title_content-height: calc(100% - 38px);
   }
 }
 </style>
--->

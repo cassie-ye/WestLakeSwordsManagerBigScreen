@@ -38,6 +38,7 @@
             <p>禁用用户数</p>
         </li>
     </ul>
+
     <Reacquire v-else @onclick="getData" line-height="200px">
         重新获取
     </Reacquire>
@@ -45,6 +46,8 @@
 
 <script>
 import { currentGET } from 'api/modules'
+import LeftCenter from "./left-center.vue";
+
 let style = {
     fontSize: 24
 }

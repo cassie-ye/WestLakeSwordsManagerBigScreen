@@ -37,7 +37,7 @@
         class="contetn_left-bottom contetn_lr-item"
         title="报警次数"
       >
-        <RightTop />
+        <!-- <RightTop /> -->
       </ItemWrap>
       <ItemWrap
         class="contetn_left-bottom contetn_lr-item"

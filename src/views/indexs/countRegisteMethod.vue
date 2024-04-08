@@ -88,7 +88,7 @@ export default {
     init() {
       // 总数220
       let total = 220;
-      let colors = ["#F50B4E", "#03EDFC", "#865AFC"];
+      let colors = ["#06F9AA","#EDE046"];
       let piedata = {
         name: "用户总览",
         type: "pie",
@@ -110,27 +110,21 @@ export default {
           //   },
           // },
           {
-            value: 2,
-            name: "禁用",
+            value: 89,
+            name: "Web端注册",
             label: {
               shadowColor: colors[0],
             },
           },
           {
-            value: 180,
-            name: "在线",
+            value: 31,
+            name: "小程序注册",
             label: {
               shadowColor: colors[2],
             },
           },
 
-          {
-            value: 38,
-            name: "离线",
-            label: {
-              shadowColor: colors[2],
-            },
-          },
+
 
         ],
       };
