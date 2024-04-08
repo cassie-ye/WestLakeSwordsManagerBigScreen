@@ -13,7 +13,7 @@
       <div class="you"></div>
     </div>
     <div class="mapwrap">
-      <dv-border-box-13>
+      <dv-border-box-13 style="height: 588px;">
         <!-- <div class="quanguo" @click="getData('china')" v-if="code !== 'china'">
           中国
         </div>
@@ -21,11 +21,19 @@
         <Echart id="CenterMap" :options="options" ref="CenterMap" /> -->
         <ItemWrap class="contetn_left-bottom contetn_lr-item" title="用户总览">
           <LeftTop></LeftTop>
-          <div class="flex">
+          <!-- <div class="flex">
             <LeftCenter></LeftCenter>
             <LeftCenter></LeftCenter>
+          </div> -->
+          <div class="item_title">
+            <div class="zuo"></div>
+            <span class="title-inner"> &nbsp;&nbsp;直播数据&nbsp;&nbsp; </span>
+            <div class="you"></div>
           </div>
+          <RightTop />
         </ItemWrap>
+        <!-- <ItemWrap class="rightTop contetn_left-bottom contetn_lr-item" title="报警次数"> -->
+        <!-- </ItemWrap> -->
       </dv-border-box-13>
     </div>
   </div>
@@ -38,6 +46,8 @@ import * as echarts from "echarts";
 import { GETNOBASE } from "api";
 import LeftTop from "./left-top.vue";
 import LeftCenter from "./left-center.vue";
+import RightTop from "./right-top.vue";
+
 export default {
   data() {
     return {
@@ -52,6 +62,7 @@ export default {
   components: {
     LeftTop,
     LeftCenter,
+    RightTop,
   },
   mounted() {
     // console.log(xzqCode);
@@ -322,6 +333,50 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$item-title-height: 38px;
+$item_title_content-height: calc(100% - 38px);
+.rightTop {
+  margin-top: -335px;
+  // background-color: blue;
+}
+.item_title {
+  // background-color: #fff;
+  margin-bottom: -50px;
+  margin-top: 10px;
+  height: $item-title-height;
+  line-height: $item-title-height;
+  width: 100%;
+  color: #31abe3;
+  text-align: center;
+  // background: linear-gradient(to right, transparent, #0f0756, transparent);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .zuo,
+  .you {
+    width: 58px;
+    height: 14px;
+    background-image: url("../../assets/img/titles/zuo.png");
+  }
+
+  .you {
+    transform: rotate(180deg);
+  }
+  .title-inner {
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(
+      92deg,
+      #0072ff 0%,
+      #00eaff 48.8525390625%,
+      #01aaff 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
 .centermap {
   margin-bottom: 30px;
 

@@ -293,7 +293,8 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-.right_top_inner {
-  margin-top: -8px;
+#rightTop{
+  margin-top: 45px;
+  height: 350px !important;
 }
 </style>
