@@ -15,9 +15,8 @@
       <ItemWrap class="contetn_left-top contetn_lr-item" title="设备总览">
         <LeftTop/>
       </ItemWrap>
-      <ItemWrap class="contetn_left-center contetn_lr-item" title="用户总览">
-        <FlyEcharts></FlyEcharts>
-        
+      <ItemWrap class="contetn_left-center contetn_lr-item " style="height: 345px;">
+        <chinaMap></chinaMap>
       </ItemWrap>
       <ItemWrap
         class="contetn_left-bottom contetn_lr-item"
@@ -67,6 +66,7 @@ import RightTop from "./right-top.vue";
 import RightCenter from "./right-center.vue";
 import RightBottom from "./right-bottom.vue";
 import FlyEcharts from "./FlyEcharts.vue";
+import chinaMap from "./chinaMap.vue";
 
 
 export default {
@@ -79,7 +79,8 @@ export default {
     RightCenter,
     RightBottom,
     CenterBottom,
-    FlyEcharts
+    FlyEcharts,
+    chinaMap
   },
   data() {
     return {
@@ -100,6 +101,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
+
 // 内容
 .contents {
   .contetn_left,
@@ -145,7 +148,6 @@ export default {
   }
 }
 
-
 @keyframes rotating {
     0% {
         -webkit-transform: rotate(0) scale(1);
@@ -160,4 +162,6 @@ export default {
         transform: rotate(360deg) scale(1);
     }
 }
+
+
 </style>
