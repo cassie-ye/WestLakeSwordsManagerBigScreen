@@ -35,9 +35,9 @@
     <div class="contetn_right">
       <ItemWrap
         class="contetn_left-bottom contetn_lr-item"
-        title="报警次数"
+        title="西湖论剑词云图"
       >
-        <!-- <RightTop /> -->
+        <WordCloud />
       </ItemWrap>
       <ItemWrap
         class="contetn_left-bottom contetn_lr-item"
@@ -67,6 +67,7 @@ import RightCenter from "./right-center.vue";
 import RightBottom from "./right-bottom.vue";
 import FlyEcharts from "./FlyEcharts.vue";
 import chinaMap from "./chinaMap.vue";
+import WordCloud from "./WordCloud.vue";
 
 
 export default {
@@ -80,7 +81,8 @@ export default {
     RightBottom,
     CenterBottom,
     FlyEcharts,
-    chinaMap
+    chinaMap,
+    WordCloud
   },
   data() {
     return {

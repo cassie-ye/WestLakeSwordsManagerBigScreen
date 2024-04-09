@@ -17,6 +17,7 @@
     <div class="quanguo" @click="getData('china')" v-if="code !== 'china'">
       中国
     </div>
+        <p class="zhanshang">展商分布图</p>
 
     <Echart id="CenterMap" :options="options" ref="CenterMap" />
     <!-- </dv-border-box-13> -->
@@ -340,8 +341,16 @@ export default {
   height: 250px;
 }
 
+.zhanshang{
+  position: absolute;
+  left: 10px;
+  top: 25px;
+  color: #00eded;
+  font-size: 16px;
+}
 .mapwrap {
   padding-top: -30px;
+  position: relative;
   height: 330px;
   width: 100%;
   // padding: 0 0 10px 0;
