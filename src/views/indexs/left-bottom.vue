@@ -13,38 +13,190 @@
   >
     <component :is="components" :data="list" :class-option="defaultOption">
       <ul class="left_boottom">
-        <li class="left_boottom_item" v-for="(item, i) in list" :key="i">
-          <span class="orderNum doudong">{{ i + 1 }}</span>
+        <li class="left_boottom_item" >
           <div class="inner_right">
             <div class="dibu"></div>
             <div class="flex">
               <div class="info">
-                <span class="labels">设备ID：</span>
+                <span class="labels">用户ID：</span>
                 <span class="contents zhuyao doudong wangguan">
-                  {{ item.gatewayno }}</span
+                  xhlj000001</span
                 >
               </div>
               <div class="info">
                 <span class="labels">时间：</span>
                 <span class="contents " style="font-size: 12px">
-                  {{ item.createTime }}</span
+                  2024-04-09 12:30:21</span
                 >
               </div>
             </div>
 
               <span
-                class="types doudong"
-                :class="{
-                  typeRed: item.onlineState == 0,
-                  typeGreen: item.onlineState == 1,
-                }"
-                >{{ item.onlineState == 1 ? "上线" : "下线" }}</span
+                class="types doudong typeRed"
+                >购买</span
               >
 
             <div class="info addresswrap">
-              <span class="labels">地址：</span>
+              <span class="labels">商品：</span>
               <span class="contents ciyao" style="font-size: 12px">
-                {{ addressHandle(item) }}</span
+                安恒小龙人</span
+              >
+            </div>
+          </div>
+        </li>
+        <li class="left_boottom_item" >
+          <div class="inner_right">
+            <div class="dibu"></div>
+            <div class="flex">
+              <div class="info">
+                <span class="labels">用户ID：</span>
+                <span class="contents zhuyao doudong wangguan">
+                  xhlj347833</span
+                >
+              </div>
+              <div class="info">
+                <span class="labels">时间：</span>
+                <span class="contents " style="font-size: 12px">
+                  2024-04-09 12:35:55</span
+                >
+              </div>
+            </div>
+
+              <span
+                class="types doudong typeGreen"
+                >兑换</span
+              >
+
+            <div class="info addresswrap">
+              <span class="labels">商品：</span>
+              <span class="contents ciyao" style="font-size: 12px">
+                西湖论剑大会定制背包</span
+              >
+            </div>
+          </div>
+        </li>
+        <li class="left_boottom_item" >
+          <div class="inner_right">
+            <div class="dibu"></div>
+            <div class="flex">
+              <div class="info">
+                <span class="labels">用户ID：</span>
+                <span class="contents zhuyao doudong wangguan">
+                  xhlj232864</span
+                >
+              </div>
+              <div class="info">
+                <span class="labels">时间：</span>
+                <span class="contents " style="font-size: 12px">
+                  2024-04-09 13:15:55</span
+                >
+              </div>
+            </div>
+
+              <span
+                class="types doudong typeGreen"
+                >兑换</span
+              >
+
+            <div class="info addresswrap">
+              <span class="labels">商品：</span>
+              <span class="contents ciyao" style="font-size: 12px">
+                2023数据安全能力洞察报告</span
+              >
+            </div>
+          </div>
+        </li>
+        <li class="left_boottom_item" >
+          <div class="inner_right">
+            <div class="dibu"></div>
+            <div class="flex">
+              <div class="info">
+                <span class="labels">用户ID：</span>
+                <span class="contents zhuyao doudong wangguan">
+                  xhlj657855</span
+                >
+              </div>
+              <div class="info">
+                <span class="labels">时间：</span>
+                <span class="contents " style="font-size: 12px">
+                  2024-04-09 13:18:05</span
+                >
+              </div>
+            </div>
+
+              <span
+                class="types doudong typeRed"
+                >购买</span
+              >
+
+            <div class="info addresswrap">
+              <span class="labels">商品：</span>
+              <span class="contents ciyao" style="font-size: 12px">
+                杭州亚运会门票</span
+              >
+            </div>
+          </div>
+        </li>
+        <li class="left_boottom_item" >
+          <div class="inner_right">
+            <div class="dibu"></div>
+            <div class="flex">
+              <div class="info">
+                <span class="labels">用户ID：</span>
+                <span class="contents zhuyao doudong wangguan">
+                  xhlj643435</span
+                >
+              </div>
+              <div class="info">
+                <span class="labels">时间：</span>
+                <span class="contents " style="font-size: 12px">
+                  2024-04-09 13:22:05</span
+                >
+              </div>
+            </div>
+
+              <span
+                class="types doudong "
+                style="color: orange;"
+                >抽奖</span
+              >
+
+            <div class="info addresswrap">
+              <span class="labels">商品：</span>
+              <span class="contents ciyao" style="font-size: 12px">
+                成都大运会门票</span
+              >
+            </div>
+          </div>
+        </li>
+        <li class="left_boottom_item" >
+          <div class="inner_right">
+            <div class="dibu"></div>
+            <div class="flex">
+              <div class="info">
+                <span class="labels">用户ID：</span>
+                <span class="contents zhuyao doudong wangguan">
+                  xhlj123233</span
+                >
+              </div>
+              <div class="info">
+                <span class="labels">时间：</span>
+                <span class="contents " style="font-size: 12px">
+                  2024-04-09 13:28:43</span
+                >
+              </div>
+            </div>
+
+              <span
+                class="types doudong "
+                style="color: orange;"
+                >抽奖</span
+              >
+
+            <div class="info addresswrap">
+              <span class="labels">商品：</span>
+              <span class="contents ciyao" style="font-size: 12px">
+                "容宝"安全卫士</span
               >
             </div>
           </div>

@@ -9,22 +9,21 @@
   <div v-if="pageflag" class="right_center_wrap beautify-scroll-def" :class="{ 'overflow-y-auto': !sbtxSwiperFlag }">
     <component :is="components" :data="list" :class-option="defaultOption">
       <ul class="right_center ">
-        <li class="right_center_item" v-for="(item, i) in list" :key="i">
-          <span class="orderNum">{{ i + 1 }}</span>
+        <li class="right_center_item" v-for="(item, i) in 8" :key="i">
           <div class="inner_right">
             <div class="dibu"></div>
             <div class="flex">
               <div class="info">
-                <span class="labels ">设备ID：</span>
-                <span class="contents zhuyao"> {{ item.gatewayno }}</span>
+                <span class="labels ">直播名称：</span>
+                <span class="contents zhuyao"> 格致论道</span>
               </div>
               <div class="info">
-                <span class="labels">型号：</span>
-                <span class="contents "> {{ item.terminalno }}</span>
+                <span class="labels">观看人数：</span>
+                <span class="contents " style="color: greenyellow;"> 328472398</span>
               </div>
               <div class="info">
-                <span class="labels">告警值：</span>
-                <span class="contents warning"> {{ item.alertvalue | montionFilter }}</span>
+                <span class="labels">点赞量：</span>
+                <span class="contents warning"> 4738434</span>
               </div>
             </div>
 
@@ -32,21 +31,20 @@
             <div class="flex">
 
               <div class="info">
-                <span class="labels"> 地址：</span>
-                <span class="contents ciyao" style="font-size:12px"> {{ item.provinceName }}/{{ item.cityName }}/{{ item.countyName }}</span>
+                <span class="labels">评论数：</span>
+                <span class="contents ciyao" style="font-size:12px;color: #7E43F7;">43535</span>
               </div>
               <div class="info time">
                 <span class="labels">时间：</span>
-                <span class="contents" style="font-size:12px"> {{ item.createtime }}</span>
+                <span class="contents" style="font-size:12px">2024-04-09 9：30-11：30</span>
               </div>
 
             </div>
             <div class="flex">
 
               <div class="info">
-                <span class="labels">报警内容：</span>
-                <span class="contents ciyao" :class="{ warning: item.alertdetail }"> {{ item.alertdetail || '无'
-                }}</span>
+                <span class="labels">热度：</span>
+                <span class="contents ciyao" style="color: red;"> 5438574</span>
               </div>
             </div>
           </div>

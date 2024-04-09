@@ -1,235 +1,131 @@
-<!--
- * @Author: daidai
- * @Date: 2022-02-28 16:16:42
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-07-20 17:57:11
- * @FilePath: \web-pc\src\pages\big-screen\view\indexs\left-center.vue
--->
 <template>
-    <ul class="user_Overview flex" v-if="pageflag">
-        <li class="user_Overview-item" style="color: #00fdfa">
-            <div class="user_Overview_nums allnum ">
-                <dv-digital-flop :config="config" style="width:100%;height:100%;" />
-            </div>
-            <p>用户总数</p>
-        </li>
-        <li class="user_Overview-item" style="color: #07f7a8">
-            <div class="user_Overview_nums online">
-                <dv-digital-flop :config="onlineconfig" style="width:100%;height:100%;" />
-            </div>
-            <p>今日签到数</p>
-        </li>
-        <li class="user_Overview-item" style="color: #e3b337">
-            <div class="user_Overview_nums offline">
-                <dv-digital-flop :config="offlineconfig" style="width:100%;height:100%;" />
-            </div>
-            <p>今日注册数</p>
-        </li>
-        <li class="user_Overview-item" style="color: #f5023d">
-            <div class="user_Overview_nums laramnum">
-                <dv-digital-flop :config="laramnumconfig" style="width:100%;height:100%;" />
-            </div>
-            <p>禁用用户数</p>
-        </li>
-    </ul>
-
-    <Reacquire v-else @onclick="getData" line-height="200px">
-        重新获取
-    </Reacquire>
-</template>
-
-<script>
-import { currentGET } from 'api/modules'
-import LeftCenter from "./left-center.vue";
-
-let style = {
-    fontSize: 24
-}
-export default {
+    <div class="center_bottom">
+      <Echart
+        :options="options"
+        id="bottomLeftChart"
+        class="echarts_bottom"
+      ></Echart>
+    </div>
+  </template>
+  
+  <script>
+  import { currentGET } from "api";
+  import { graphic } from "echarts";
+  export default {
     data() {
-        return {
-            options: {},
-            userOverview: {
-                alarmNum: 0,
-                offlineNum: 0,
-                onlineNum: 0,
-                totalNum: 0,
-            },
-            pageflag: true,
-            timer: null,
-            config: {
-                number: [100],
-                content: '{nt}',
-                style: {
-                    ...style,
-                    // stroke: "#00fdfa",
-                    fill: "#00fdfa",
-                },
-            },
-            onlineconfig: {
-                number: [0],
-                content: '{nt}',
-                style: {
-                    ...style,
-                    // stroke: "#07f7a8",
-                    fill: "#07f7a8",
-                },
-            },
-            offlineconfig: {
-                number: [1],
-                content: '{nt}',
-                style: {
-                    ...style,
-                    // stroke: "#e3b337",
-                    fill: "#e3b337",
-                },
-            },
-            laramnumconfig: {
-                number: [0],
-                content: '{nt}',
-                style: {
-                    ...style,
-                    // stroke: "#f5023d",
-                    fill: "#f5023d",
-                },
-            }
-
-        };
+      return {
+        options: {},
+      };
     },
-    filters: {
-        numsFilter(msg) {
-            return msg || 0;
-        },
-    },
-    created() {
-        this.getData()
-    },
+    props: {},
     mounted() {
-    },
-    beforeDestroy() {
-        this.clearData()
-
+      this.getData();
     },
     methods: {
-        clearData() {
-            if (this.timer) {
-                clearInterval(this.timer)
-                this.timer = null
-            }
-        },
-        getData() {
-            // this.pageflag = true;
-            // currentGET("big2").then((res) => {
-            //     if (!this.timer) {
-            //         console.log("设备总览", res);
-            //     }
-            //     if (res.success) {
-            //         this.userOverview = res.data;
-            //         this.onlineconfig = {
-            //             ...this.onlineconfig,
-            //             number: [res.data.onlineNum]
-            //         }
-            //         this.config = {
-            //             ...this.config,
-            //             number: [res.data.totalNum]
-            //         }
-            //         this.offlineconfig = {
-            //             ...this.offlineconfig,
-            //             number: [res.data.offlineNum]
-            //         }
-            //         this.laramnumconfig = {
-            //             ...this.laramnumconfig,
-            //             number: [res.data.alarmNum]
-            //         }
-            //         this.switper()
-            //     } else {
-            //         this.pageflag = false;
-            //         this.$Message.warning(res.msg);
-            //     }
-            // });
-        },
-        //轮询
-        switper() {
-            if (this.timer) {
-                return
-            }
-            let looper = (a) => {
-                this.getData()
-            };
-            this.timer = setInterval(looper, this.$store.state.setting.echartsAutoTime);
-        },
+      getData() {
+        this.pageflag = true;
+        currentGET("big6", { companyName: this.companyName }).then((res) => {
+          // console.log("安装计划", res);
+          if (res.success) {
+            this.init(res.data);
+          } else {
+            this.pageflag = false;
+            this.$Message({
+              text: res.msg,
+              type: "warning",
+            });
+          }
+        });
+      },
+      init(newData) {
+        this.options = {
+          tooltip: {
+            trigger: "axis",
+            backgroundColor: "rgba(0,0,0,.6)",
+            borderColor: "rgba(147, 235, 248, .8)",
+            textStyle: {
+              color: "#FFF",
+            },
+          },
+          legend: {
+            data: [ "热度"],
+            textStyle: {
+              color: "#B4B4B4",
+            },
+            top: "0",
+            right:'0px'
+          },
+          grid: {
+            left: "50px",
+            right: "40px",
+            bottom: "30px",
+            top: "20px",
+          },
+          xAxis: {
+            data: ['好物商城','积分抽奖','拍照打卡','个性化定制海报','趣味答题','热点话题讨论'],
+            axisLine: {
+              lineStyle: {
+                color: "#B4B4B4",
+              },
+            },
+            axisTick: {
+              show: false,
+            },
+          },
+          yAxis: [
+            {
+              splitLine: { show: false },
+              axisLine: {
+                lineStyle: {
+                  color: "#B4B4B4",
+                },
+              },
+  
+              axisLabel: {
+                // formatter: "{value}",
+              },
+            },
+            {
+              splitLine: { show: false },
+              axisLine: {
+                lineStyle: {
+                  color: "#B4B4B4",
+                },
+              },
+              axisLabel: {
+                // formatter: "{value}% ",
+              },
+            },
+          ],
+          series: [
+            {
+              name: "热度",
+              type: "bar",
+              barWidth: 30,
+              itemStyle: {
+                borderRadius: 5,
+                color: new graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: "#956FD4" },
+                  { offset: 1, color: "#3EACE5" },
+                ]),
+              },
+              data:[87970,86798,96879,76800,97088,96879],
+            },
+          ],
+        };
+      },
     },
-};
-</script>
-<style lang='scss' scoped>
-.user_Overview {
-    // background-color: #fff;
-    height: 150px;
-    align-items: center;
-    
-    li {
-        margin-top: -40px;
-        flex: 1;
-        p {
-            text-align: center;
-            height: 16px;
-            font-size: 16px;
-        }
-
-        .user_Overview_nums {
-            width: 100px;
-            height: 100px;
-            text-align: center;
-            line-height: 100px;
-            font-size: 22px;
-            margin: 50px auto 30px;
-            background-size: cover;
-            background-position: center center;
-            position: relative;
-
-            &::before {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-            }
-
-            &.bgdonghua::before {
-                animation: rotating 14s linear infinite;
-            }
-        }
-
-        .allnum {
-
-            // background-image: url("../../assets/img/left_top_lan.png");
-            &::before {
-                background-image: url("../../assets/img/left_top_lan.png");
-
-            }
-        }
-
-        .online {
-            &::before {
-                background-image: url("../../assets/img/left_top_lv.png");
-
-            }
-        }
-
-        .offline {
-            &::before {
-                background-image: url("../../assets/img/left_top_huang.png");
-
-            }
-        }
-
-        .laramnum {
-            &::before {
-                background-image: url("../../assets/img/left_top_hong.png");
-
-            }
-        }
+  };
+  </script>
+  <style lang="scss" scoped>
+  .center_bottom {
+    width: 100%;
+    height: 100%;
+  
+    .echarts_bottom {
+      width: 100%;
+      height: 100%;
     }
-}
-</style>
+  }
+  </style>
+  

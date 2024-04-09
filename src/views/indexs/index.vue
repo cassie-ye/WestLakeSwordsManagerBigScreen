@@ -12,7 +12,7 @@
         <!-- <div class="item">实时监测</div> -->
         
       </div>
-      <ItemWrap class="contetn_left-top contetn_lr-item" title="设备总览">
+      <ItemWrap class="contetn_left-top contetn_lr-item" title="互动模块热度统计">
         <LeftTop/>
       </ItemWrap>
       <ItemWrap class="contetn_left-center contetn_lr-item " style="height: 345px;">
@@ -20,7 +20,7 @@
       </ItemWrap>
       <ItemWrap
         class="contetn_left-bottom contetn_lr-item"
-        title="设备提醒"
+        title="好物商城实时订单"
         style="padding: 0 10px 16px 10px"
       >
         <LeftBottom />
@@ -48,7 +48,7 @@
       </ItemWrap>
       <ItemWrap
         class="contetn_left-bottom contetn_lr-item"
-        title="数据统计图 "
+        title="直播效益反馈 "
       >
         <RightBottom />
       </ItemWrap>
