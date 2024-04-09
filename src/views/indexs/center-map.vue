@@ -52,7 +52,7 @@ import countRegisteMethod from "./countRegisteMethod.vue";
 export default {
   data() {
     return {
-      maptitle: "设备分布图",
+      maptitle: "数字安全@数字中国",
       options: {},
       code: "china", //china 代表中国 其他地市是行政编码
       echartBindClick: false,
