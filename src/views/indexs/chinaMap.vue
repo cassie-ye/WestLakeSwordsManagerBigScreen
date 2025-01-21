@@ -17,7 +17,7 @@
     <div class="quanguo" @click="getData('china')" v-if="code !== 'china'">
       中国
     </div>
-        <p class="zhanshang">展商分布图</p>
+    <p class="zhanshang">展商分布图</p>
 
     <Echart id="CenterMap" :options="options" ref="CenterMap" />
     <!-- </dv-border-box-13> -->
@@ -26,9 +26,13 @@
 </template>
 
 <script>
-import xzqCode from "../../utils/map/xzqCode";
+// 提供中国行政区的代码（adcode）信息
+// import xzqCode from "../../utils/map/xzqCode";
+// GET请求 currentGET 传入两个参数 路径和params
 import { currentGET } from "api/modules";
+// 引入echarts
 import * as echarts from "echarts";
+// 没有基地址的GET请求
 import { GETNOBASE } from "api";
 export default {
   data() {
@@ -40,38 +44,39 @@ export default {
       isSouthChinaSea: false, //是否要展示南海群岛  修改此值请刷新页面
     };
   },
-  created() {},
+  created() { },
 
   mounted() {
-    // console.log(xzqCode);
     this.getData("china");
   },
   methods: {
     getData(code) {
       currentGET("big8", { regionCode: code }).then((res) => {
-        console.log("设备分布", res);
         if (res.success) {
+          console.log("设备分布", res);
           this.getGeojson(res.data.regionCode, res.data.dataList);
-          this.mapclick();
+          // this.mapclick();
         } else {
           this.$Message.warning(res.msg);
         }
       });
     },
     /**
-     * @description: 获取geojson
+     * @description: 获取地图的 GeoJSON 数据，并根据这些数据进行一些处理和初始化
      * @param {*} name china 表示中国 其他省份行政区编码
      * @param {*} mydata 接口返回列表数据
      * @return {*}
      */
     async getGeojson(name, mydata) {
+      // 设置地图名称
       this.code = name;
-      //如果要展示南海群岛并且展示的是中国的话
+      console.log('this.code',this.code)
+      // 处理南海的特殊情况
       let geoname = name;
       if (this.isSouthChinaSea && name == "china") {
         geoname = "chinaNanhai";
       }
-      //如果有注册地图的话就不用再注册 了
+      // 获取或加载地图 JSON 数据
       let mapjson = echarts.getMap(name);
       if (mapjson) {
         mapjson = mapjson.geoJSON;
@@ -85,11 +90,12 @@ export default {
       }
       let cityCenter = {};
       let arr = mapjson.features;
-      //根据geojson获取省份中心点
+      console.log('arrrrr',arr)
       arr.map((item) => {
         cityCenter[item.properties.name] =
           item.properties.centroid || item.properties.center;
       });
+      console.log('arr',arr)
       let newData = [];
       mydata.map((item) => {
         if (cityCenter[item.name]) {
@@ -99,14 +105,12 @@ export default {
           });
         }
       });
-      console.log("name", name);
-      console.log("mydata", mydata);
-      console.log("newData", newData);
-      mydata=[
-        {name:"江苏省",value:2},
-        {name:"广东省",value:2},
-        {name:"浙江省",value:3},
-        {name:"北京市",value:8},
+      console.log('newData',newData)
+      mydata = [
+        { name: "江苏省", value: 2 },
+        { name: "广东省", value: 277 },
+        { name: "浙江省", value: 888 },
+        { name: "北京市", value: 87 },
       ]
       newData = [
         {
@@ -115,15 +119,15 @@ export default {
         },
         {
           name: "广东省",
-          value: [113.429919, 23.334643, 2],
+          value: [113.429919, 23.334643, 277],
         },
         {
           name: "浙江省",
-          value: [120.109913, 29.181466, 3],
+          value: [120.109913, 29.181466, 8],
         },
         {
-          name:"北京市",
-          value:[116.41995,40.18994,8]
+          name: "北京市",
+          value: [116.41995, 40.18994, 88]
         }
       ];
       this.init(name, mydata, newData);
@@ -312,26 +316,26 @@ export default {
       };
       this.options = option;
     },
-    message(text) {
-      this.$Message({
-        text: text,
-        type: "warning",
-      });
-    },
-    mapclick() {
-      if (this.echartBindClick) return;
-      //单击切换到级地图，当mapCode有值,说明可以切换到下级地图
-      this.$refs.CenterMap.chart.on("click", (params) => {
-        // console.log(params);
-        let xzqData = xzqCode[params.name];
-        if (xzqData) {
-          this.getData(xzqData.adcode);
-        } else {
-          this.message("暂无下级地市!");
-        }
-      });
-      this.echartBindClick = true;
-    },
+    // message(text) {
+    //   this.$Message({
+    //     text: text,
+    //     type: "warning",
+    //   });
+    // },
+    // mapclick() {
+    //   if (this.echartBindClick) return;
+    //   //单击切换到级地图，当mapCode有值,说明可以切换到下级地图
+    //   this.$refs.CenterMap.chart.on("click", (params) => {
+    //     // console.log(params);
+    //     let xzqData = xzqCode[params.name];
+    //     if (xzqData) {
+    //       this.getData(xzqData.adcode);
+    //     } else {
+    //       this.message("暂无下级地市!");
+    //     }
+    //   });
+    //   this.echartBindClick = true;
+    // },
   },
 };
 </script>
@@ -341,13 +345,14 @@ export default {
   height: 250px;
 }
 
-.zhanshang{
+.zhanshang {
   position: absolute;
   left: 10px;
   top: 25px;
   color: #00eded;
   font-size: 16px;
 }
+
 .mapwrap {
   padding-top: -30px;
   position: relative;

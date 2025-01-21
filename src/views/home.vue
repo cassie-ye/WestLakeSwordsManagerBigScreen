@@ -7,16 +7,11 @@
 -->
 <template>
   <!-- <div id="index" ref="appRef" class="index_home" :class="{ pageisScale: isScale }"> -->
-  <ScaleScreen
-    :width="1920"
-    :height="1080"
-    class="scale-wrap"
-    :selfAdaption="$store.state.setting.isScale"
-  >
+  <ScaleScreen :width="1920" :height="1080" class="scale-wrap" :selfAdaption="$store.state.setting.isScale">
     <div class="bg">
       <dv-loading v-if="loading">Loading...</dv-loading>
       <div v-else class="host-body">
-        <!-- 头部 s -->
+        <!-- 头部 -->
         <div class="d-flex jc-center title_wrap">
           <div class="zuojuxing"></div>
           <div class="youjuxing"></div>
@@ -28,11 +23,7 @@
           </div>
           <div class="timers">
             {{ dateYear }} {{ dateWeek }} {{ dateDay }}
-            <i
-              class="blq-icon-shezhi02"
-              style="margin-left: 10px"
-              @click="showSetting"
-            ></i>
+            <i class="blq-icon-shezhi02" style="margin-left: 10px" @click="showSetting"></i>
           </div>
         </div>
         <!-- 头部 e-->
@@ -68,7 +59,7 @@ export default {
     },
   },
   computed: {},
-  created() {},
+  created() { },
   mounted() {
     this.timeFn();
     this.cancelLoading();
